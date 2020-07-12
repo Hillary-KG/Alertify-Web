@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+	<meta name="author" content="">
+	
+	<!-- site icon -->
+	<link rel="icon" href="{% static 'img/question.png' %}">
+	<!-- Bootstrap core CSS -->
+	<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link href="{% static 'css/font-awesome.min.css' %}" rel="stylesheet">
+
+	<!-- Pace -->
+	<link href="{% static 'css/pace.css' %}" rel="stylesheet">
+
+	<!-- Color box -->
+	<link href="{% static 'css/colorbox/colorbox.css' %}" rel="stylesheet">
+
+	<!-- Morris -->
+	<link href="{% static 'css/morris.css' %}" rel="stylesheet"> 
+
+	<!-- Endless -->
+	<link href="{% static 'css/endless.min.css' %}" rel="stylesheet">
+	<link href="{% static 'css/endless-skin.css' %}" rel="stylesheet">
+  
+  </head>
+
+  <body class="overflow-hidden">
+	<!-- Overlay Div -->
+	<div id="overlay" class="transparent"></div>
+
+	<div id="wrapper" class="preload">
+		{% block top_nav %}{% endblock top_nav %}
+
+		{% block side_nav %}{% endblock side_nav %}
+
+		{% block content %}{% endblock content %}
+
+		<!-- Footer
+		================================================== -->
+		<footer style="background-color: #65cea7;color: #fff;">
+			<div class="row" style="text-align: center;">
+				<div class="col-sm-6">
+					<span class="footer-brand">
+						<strong class="text-danger">Alertify</strong> |
+					</span>
+					<p class="no-margin">
+						&copy; 2019 <strong>Alertify</strong>. ALL Rights Reserved. 
+					</p>
+				</div><!-- /.col -->
+			</div><!-- /.row-->
+		</footer>
+	</div>
+	
+	
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	
+	<!-- Jquery -->
+  <script src="{% static 'js/jquery-1.10.2.min.js' %}"></script>
+
+  <!-- Bootstrap -->
+  <script src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+   
+  <!-- Flot -->
+  <!-- <script src="{% static 'js/jquery.flot.min.js' %}"></script> -->
+   
+  <!-- Morris -->
+  <script src="{% static 'js/rapheal.min.js' %}"></script>
+  <script src="{% static 'js/morris.min.js' %}"></script>
+  
+  <!-- Colorbox -->
+  <script src="{% static 'js/jquery.colorbox.min.js' %}"></script>
+
+  <!-- Sparkline -->
+  <script src="{% static 'js/jquery.sparkline.min.js' %}"></script>
+  
+  <!-- Pace -->
+  <script src="{% static 'js/uncompressed/pace.js' %}"></script>
+  
+  <!-- Popup Overlay -->
+  <script src="{% static 'js/jquery.popupoverlay.min.js' %}"></script>
+  
+  <!-- Slimscroll -->
+  <script src="{% static 'js/jquery.slimscroll.min.js' %}"></script>
+  
+  <!-- Modernizr -->
+  <script src="{% static 'js/modernizr.min.js' %}"></script>
+  
+  <!-- Cookie -->
+  <script src="{% static 'js/jquery.cookie.min.js' %}"></script>
+  
+  <!-- Endless -->
+  <!-- <script src="{% static 'js/endless/endless_dashboard.js' %}"></script> -->
+  <script src="{% static 'js/endless/endless.js' %}"></script>
+
+	<!-- firebase initialize -->
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script defer src="/__/firebase/7.16.0/firebase-app.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	https://firebase.google.com/docs/web/setup#available-libraries -->
+	<script defer src="/__/firebase/7.16.0/firebase-database.js"></script>
+	<script defer src="/__/firebase/7.16.0/firebase-messaging.js"></script>
+	<script defer src="/__/firebase/7.16.0/firebase-storage.js"></script>
+	<script defer src="/__/firebase/7.16.0/firebase-analytics.js"></script>
+
+	<script defer src="{% static 'js/init-firebase.js' %}"></script>
+
+	<!-- Initialize Firebase -->
+	<!-- <script src="/__/firebase/init.js"></script> -->
+
+	<script>
+		// TODO: Replace the following with your app's Firebase project configuration
+		const firebaseConfig = {
+		  apiKey: "AIzaSyA-atkaTHhE-fJm7hcr4njC4_elRa3DrnQ",
+		  authDomain: "citispy-91191.firebaseapp.com",
+		  databaseURL: "https://citispy-91191.firebaseio.com",
+		  projectId: "citispy-91191",
+		  storageBucket: "citispy-91191.appspot.com",
+		  messagingSenderId: "629555630146",
+		  appId: "1:629555630146:web:53153b172b74c280559ddb",
+		  measurementId: "G-TNXTNTCWG5"
+	  };
+	
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+
+
+		var alertsRef = firebase.database().ref('alerts');
+		alertsRef.on('value', function (snapshot) {
+			console.log("data", snapshot.val());
+			//push notification
+
+		})
+	  </script>
+  {% block js %}{% endblock js %}	
+  </body>
+</html>
