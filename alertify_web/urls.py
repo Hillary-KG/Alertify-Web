@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+# from firebase.views import ServiceWorkerView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls'), name='accounts'),
     path('em_dept/', include('emergency_dept.urls')),
+    path('fcm/', include('firebase.urls'), name='fcm_push'),
+    # path('firebase-messaging-sw.js', ServiceWorkerView.as_view(), name='service_worker')
 ]
