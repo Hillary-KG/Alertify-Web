@@ -211,6 +211,7 @@
         <thead>
           <tr>
             <th scope="col">Time In</th>
+            <th scope="col">Alert Type</th>
             <th scope="col">Raiser Details</th>
             <th scope="col">Phone Number</th>
             <th scope="col">Location</th>
@@ -325,8 +326,9 @@
           <div class="col-lg-12">
             <div class="panel bg-info fadeInDown animation-delay4">
               <div class="panel-body">
-                <div id="alertsLineChart" style="height: 250px;">
+                <div id="alertsLineChart" style="height: auto;">
                   <span class="text-center">Emergency Trend Graph</span>
+                  <canvas id="alertsChart" width="400" style="height: 250px !important;"></canvas>
                 </div>
               </div>
               <div class="panel-footer">
@@ -419,6 +421,25 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
+
+  <!--Modal-->
+  <div class="modal fade" id="alertModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header text-danger text-center">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 id="modal_head">Alert Info</h4>
+        </div>
+        <div class="modal-body">
+          <div class="panel panel-default">
+            <div class="panel-body" id="alertPanel" style="background: #e28985; color: white;">
+              <!-- alert details here -->
+            </div>
+          </div><!-- /panel -->
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
   {% endblock content %}
 
   {% block js %}
@@ -477,6 +498,31 @@
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function (data) {
       alert(JSON.stringify(data));
+    });
+  </script> -->
+
+  
+
+  <!-- <script>
+    var $dataArray = []
+    var $labelsArray = []
+
+    var $options = [
+
+    ]
+    var $data = [{
+          datasets: [
+            data: $dataArray
+          ],
+
+          labels: $labelsArray
+      }]
+
+    
+    var donChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: $data,
+      options: options
     });
   </script> -->
 
