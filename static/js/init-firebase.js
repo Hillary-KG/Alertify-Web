@@ -84,7 +84,8 @@ function createChart() {
     $labelsArray.forEach(element => {
         $dataArray.push($labelsArray.filter(element => element === element))
     });
-    console.log("data ===>", $dataArray);
+
+    // console.log("data ===>", $dataArray);
 
     var $options = {}
 
